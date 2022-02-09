@@ -1,0 +1,43 @@
+---
+title: "Joining Tables in R"
+output: html_notebook
+---
+
+```{r message = FALSE}
+# load packages
+library(readr)
+library(dplyr)
+```
+
+```{r message = FALSE}
+# load visits and checkouts data
+visits <- read_csv('visits.csv')
+checkouts <- read_csv('checkouts.csv')
+```
+
+```{r}
+# inspect visits and checkouts here:
+head(visits)
+head(checkouts)
+
+```
+
+```{r}
+# define v_to_c here:
+
+v_to_c = visits %>% inner_join(checkouts)
+v_to_c
+v_to_c <- v_to_c %>% 
+  mutate(time = checkout_time - visit_time)
+v_to_c
+
+```
+
+```{r}
+# define avg_time_to_check here:
+avg_time_to_check <- v_to_c %>% 
+  summarize(mean_time = mean(time))
+avg_time_to_check
+
+
+```
