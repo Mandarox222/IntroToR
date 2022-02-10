@@ -120,7 +120,7 @@ print(check_no_purchase_percent)
 
 ```{r error=TRUE}
 # add time_to_purchase column
-all_data <- all_data %>%
+all_data = all_data %>%
   mutate(time_to_purchase = purchase_time - visit_time)
 
 ```
@@ -133,7 +133,7 @@ head(all_data)
 ```{r error=TRUE}
 # finds average time to purchase
 
-time_to_purchase <- all_data %>%
+time_to_purchase = all_data %>%
   summarize(mean_time = mean(time_to_purchase, na.rm = TRUE))
 time_to_purchase
 
